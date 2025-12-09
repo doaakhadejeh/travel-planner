@@ -6,7 +6,11 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("travel planner")),
+      appBar: AppBar(
+        title: Text("travel planner"),
+        centerTitle: true,
+        backgroundColor: Colors.green,
+      ),
       body: Center(),
     );
   }
