@@ -15,7 +15,7 @@ class Costomtextformfield extends StatelessWidget {
   final InputBorder? enabledBorder;
   final InputBorder? disabledBorder;
   final void Function()? showtext;
-  final String? Function(String?)? validator;
+  final String? validatortext;
   const Costomtextformfield({
     super.key,
     this.controller,
@@ -28,7 +28,7 @@ class Costomtextformfield extends StatelessWidget {
     this.readOnly,
     this.obscureText,
     this.typekeybord,
-    this.validator,
+    this.validatortext,
     this.focusedBorder,
     this.enabledBorder,
     this.disabledBorder,
@@ -65,7 +65,13 @@ class Costomtextformfield extends StatelessWidget {
       keyboardType: typekeybord ?? .text,
       readOnly: readOnly ?? false,
       obscureText: obscureText ?? false,
-      validator: validator,
+      validator: (value) {
+        if (validatortext == null) return null;
+        if (value == null || value.isEmpty) {
+          return validatortext;
+        }
+        return null;
+      },
     );
   }
 }

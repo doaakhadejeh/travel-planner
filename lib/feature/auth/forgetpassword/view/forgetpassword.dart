@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
-import 'package:travel_planner/core/routing/const_rout.dart';
 import 'package:travel_planner/core/widget/costomtextformfield.dart';
-import 'package:travel_planner/core/widget/custombutton.dart';
+import 'package:travel_planner/feature/auth/forgetpassword/logic/cubit/forgetpassword_cubit.dart';
+import 'package:travel_planner/feature/auth/forgetpassword/view/widget/buttonforgetpass.dart';
+import 'package:travel_planner/feature/auth/forgetpassword/view/widget/listenerforgetpassword.dart';
+import 'package:travel_planner/feature/auth/forgetpassword/view/widget/topforgetpass.dart';
 
 class Forgetpassword extends StatelessWidget {
   const Forgetpassword({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ForgetpasswordCubit>();
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
@@ -17,38 +20,20 @@ class Forgetpassword extends StatelessWidget {
         child: ListView(
           children: [
             SizedBox(height: 20.h),
-            Text(
-              "forget your password!",
-              style: TextStyle(
-                // color: Colors.green,
-                fontWeight: .bold,
-                fontSize: 20.sp,
-              ),
-            ),
-            SizedBox(height: 60.h),
-            Text(
-              "    enter your email:",
-              style: TextStyle(
-                fontWeight: .bold,
-                fontSize: 11.sp,
-                color: Colors.grey,
-              ),
-            ),
+            Topforgetpassword(),
             SizedBox(height: 10.h),
-            Costomtextformfield(hinttext: 'email', prefixicon: Icons.email),
-            SizedBox(height: 30.h),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 3.h, horizontal: 14.w),
-              child: Custombutton(
-                onPressed: () {
-                  context.go(Routconst.resetpassword);
-                },
-                backgroundColor: Colors.green.shade200,
-                isRectangleBorder: true,
-                radiusRectangleBorder: 10.sp,
-                child: Text("verify    "),
+            Form(
+              key: cubit.formKey,
+              child: Costomtextformfield(
+                hinttext: 'email',
+                prefixicon: Icons.email,
+                controller: cubit.email,
+                validatortext: "Please enter a valid email",
               ),
             ),
+            SizedBox(height: 30.h),
+            Buttonforgetpassword(),
+            Listenerforgetpassword(),
           ],
         ),
       ),

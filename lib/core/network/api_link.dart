@@ -3,7 +3,7 @@ class ApiLink {
 
   // ------------------ Auth ------------------
   static const String login = "$baseUri/login";
-  static const String signin = "$baseUri/register";
+  static const String register = "$baseUri/register";
   static const String forgotPassword = "$baseUri/forgotPassword";
   static const String resetPassword = "$baseUri/resetPassword";
   static const String verifyCode = "$baseUri/verifyCode";

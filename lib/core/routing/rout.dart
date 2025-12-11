@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:travel_planner/core/di/dependcy_injection.dart';
+import 'package:travel_planner/core/helper/sharedpref_helper.dart';
 import 'package:travel_planner/core/routing/const_rout.dart';
+import 'package:travel_planner/feature/auth/forgetpassword/logic/cubit/forgetpassword_cubit.dart';
 import 'package:travel_planner/feature/auth/forgetpassword/view/forgetpassword.dart';
+import 'package:travel_planner/feature/auth/login/logic/cubit/login_cubit.dart';
 import 'package:travel_planner/feature/auth/login/view/login.dart';
+import 'package:travel_planner/feature/auth/register/logic/cubit/register_cubit.dart';
 import 'package:travel_planner/feature/auth/register/view/register.dart';
+import 'package:travel_planner/feature/auth/resetpassword/logic/cubit/resetpassword_cubit.dart';
 import 'package:travel_planner/feature/auth/resetpassword/view/resetpassword.dart';
+import 'package:travel_planner/feature/auth/verifyemail/logic/cubit/verifyemail_cubit.dart';
 import 'package:travel_planner/feature/auth/verifyemail/view/verifyemail.dart';
 import 'package:travel_planner/feature/home/view/home.dart';
-import 'package:travel_planner/onbording.dart';
+import 'package:travel_planner/feature/onbording/onbording.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 final GoRouter router = GoRouter(
   routes: <RouteBase>[
@@ -26,42 +34,63 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: Routconst.login,
       builder: (BuildContext context, GoRouterState state) {
-        return const Login();
+        return BlocProvider(
+          create: (context) => getIt<LoginCubit>(),
+          child: const Login(),
+        );
       },
     ),
     GoRoute(
       path: Routconst.register,
       builder: (BuildContext context, GoRouterState state) {
-        return const Register();
+        return BlocProvider(
+          create: (context) => getIt<RegisterCubit>(),
+          child: const Register(),
+        );
       },
     ),
     GoRoute(
       path: Routconst.forgetpassword,
       builder: (BuildContext context, GoRouterState state) {
-        return const Forgetpassword();
+        return BlocProvider(
+          create: (context) => getIt<ForgetpasswordCubit>(),
+          child: const Forgetpassword(),
+        );
       },
     ),
     GoRoute(
       path: Routconst.resetpassword,
       builder: (BuildContext context, GoRouterState state) {
-        return const Resetpassword();
+        return BlocProvider(
+          create: (context) => getIt<ResetpasswordCubit>(),
+          child: const Resetpassword(),
+        );
       },
     ),
     GoRoute(
       path: Routconst.verifyemail,
       builder: (BuildContext context, GoRouterState state) {
-        return const Verifyemail();
+        return BlocProvider(
+          create: (context) => getIt<VerifyemailCubit>(),
+          child: const Verifyemail(),
+        );
       },
     ),
   ],
-  // redirect: (context, state) {
-  //   final isLoggedIn = SharedPrefHelper.getStringSync("userToken").isNotEmpty;
+  redirect: (context, state) {
+    final token = SharedPrefHelper.getStringSync("userToken");
 
-  //   final loggingIn = state.matchedLocation == Routconst.login;
+    final bool loggedIn = token.isNotEmpty;
+    final bool onboarding = state.matchedLocation == Routconst.onbording;
 
-  //   if (!isLoggedIn && !loggingIn) return Routconst.login;
-  //   if (isLoggedIn && loggingIn) return Routconst.home;
+    if (!loggedIn && !onboarding) {
+      return Routconst.onbording;
+    }
 
-  //   return null;
-  // },
+    if (loggedIn && onboarding) {
+      return Routconst.home;
+    }
+
+    return null;
+  },
 );

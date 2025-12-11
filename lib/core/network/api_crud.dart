@@ -17,7 +17,7 @@ class Crud {
     }
   }
 
-  Future<Either<Failure, Map>> getdata(String linkurl) async {
+  Future<Either<Failure, Map>> getData(String linkurl) async {
     try {
       var response = await _dio.get(linkurl);
       return Right(response.data);
@@ -26,7 +26,7 @@ class Crud {
     }
   }
 
-  Future<Either<Failure, Map>> putdata(String linkurl, dynamic data) async {
+  Future<Either<Failure, Map>> putData(String linkurl, dynamic data) async {
     try {
       var response = await _dio.put(linkurl, data: data);
       return Right(response.data);
@@ -35,7 +35,7 @@ class Crud {
     }
   }
 
-  Future<Either<Failure, Map>> deletedata(String linkurl) async {
+  Future<Either<Failure, Map>> deleteData(String linkurl) async {
     try {
       var response = await _dio.delete(linkurl);
       return Right(response.data);
