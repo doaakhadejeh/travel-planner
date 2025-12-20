@@ -8,11 +8,14 @@ class Topregister extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: .start,
       children: [
-        Image.asset(Imagesconst.logo, height: 190.h, width: 190.w),
+        Center(
+          child: Image.asset(Imagesconst.logo, height: 190.h, width: 190.w),
+        ),
         SizedBox(height: 5.h),
         Text(
-          "WellCome",
+          "WelCome",
           style: TextStyle(fontSize: 29.sp, fontWeight: .bold),
         ),
         SizedBox(height: 10.h),

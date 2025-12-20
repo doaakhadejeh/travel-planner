@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:travel_planner/feature/auth/forgetpassword/view/widget/buttonforgetpass.dart';
+import 'package:travel_planner/feature/auth/login/view/widget/buttonforgetpassword.dart';
 import 'package:travel_planner/feature/auth/login/view/widget/buttongotoregister.dart';
 import 'package:travel_planner/feature/auth/login/view/widget/buttonlogin.dart';
 import 'package:travel_planner/feature/auth/login/view/widget/emilandpassword.dart';
@@ -25,7 +25,7 @@ class Login extends StatelessWidget {
             Buttonlogin(),
             Buttongotoregister(),
             SizedBox(height: 10.h),
-            Buttonforgetpassword(),
+            ButtonforgetpasswordLogin(),
             Loginlistener(),
           ],
         ),

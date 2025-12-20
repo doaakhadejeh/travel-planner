@@ -16,15 +16,14 @@ class _EmilandpasswordState extends State<Emilandpassword> {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<LoginCubit>();
     return Form(
-      key: cubit.formKey,
+      key: context.read<LoginCubit>().formKey,
       child: Column(
         children: [
           Costomtextformfield(
             hinttext: 'email',
             prefixicon: Icons.email,
-            controller: cubit.email,
+            controller: context.read<LoginCubit>().email,
             validatortext: "please enter correct email",
           ),
           SizedBox(height: 5.h),
@@ -37,7 +36,7 @@ class _EmilandpasswordState extends State<Emilandpassword> {
                 hidepassword = !hidepassword;
               });
             },
-            controller: cubit.password,
+            controller: context.read<LoginCubit>().password,
             validatortext: "please enter correct password",
           ),
         ],

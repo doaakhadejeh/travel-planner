@@ -1,12 +1,18 @@
 class VerifyEmailResponse {
-  final String code;
+  final String name;
+  final int id;
   final String email;
 
-  VerifyEmailResponse({required this.code, required this.email});
+  VerifyEmailResponse({
+    required this.name,
+    required this.id,
+    required this.email,
+  });
 
   factory VerifyEmailResponse.fromJson(Map json) {
     return VerifyEmailResponse(
-      code: json['data']['code'],
+      id: json['data']['id'],
+      name: json['data']['name'],
       email: json['data']['email'],
     );
   }

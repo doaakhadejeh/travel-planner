@@ -6,13 +6,20 @@ class SharedPrefHelper {
   // private constructor as I don't want to allow creating an instance of this class itself.
   SharedPrefHelper._();
   static SharedPreferences? _prefs;
+  static FlutterSecureStorage? _secureStorage;
 
   static Future init() async {
     _prefs = await SharedPreferences.getInstance();
+    _secureStorage = FlutterSecureStorage();
   }
 
   static String getStringSync(String key) {
     return _prefs?.getString(key) ?? '';
+  }
+
+  static dynamic getSecuredString2(String key) {
+    debugPrint('FlutterSecureStorage : getSecuredString with key :');
+    return _secureStorage?.read(key: key) ?? '';
   }
 
   /// Removes a value from SharedPreferences with given [key].

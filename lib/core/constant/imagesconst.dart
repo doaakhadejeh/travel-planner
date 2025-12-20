@@ -10,4 +10,14 @@ class Imagesconst {
   static const String tour2 = '$imageBase/tour2.jpg';
   static const String tour3 = '$imageBase/tour3.jpg';
   static const String tour4 = '$imageBase/tour4.jpg';
+  static const String home1 = '$imageBase/home1.jpg';
+  static const String home2 = '$imageBase/home2.jpg';
+  static const String home3 = '$imageBase/home3.jpg';
+  static const String home4 = '$imageBase/home4.jpg';
+  static const String home5 = '$imageBase/home5.jpg';
+  static const String locationwithoutbac1 = '$imageBase/locationwithoutbac.png';
+  static const String locationwithoutbac2 =
+      '$imageBase/locationwithoutbac2.png';
+  static const String locationwithoutbac3 =
+      '$imageBase/locationwithoutbac3.png';
 }

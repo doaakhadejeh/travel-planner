@@ -14,8 +14,8 @@ class DioFactory {
     _dio = Dio();
 
     _dio!.options
-      ..connectTimeout = const Duration(seconds: 30)
-      ..receiveTimeout = const Duration(seconds: 30);
+      ..connectTimeout = const Duration(seconds: 360)
+      ..receiveTimeout = const Duration(seconds: 360);
 
     _addInterceptorsOnce();
 

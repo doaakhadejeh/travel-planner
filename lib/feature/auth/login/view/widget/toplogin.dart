@@ -8,11 +8,14 @@ class Toplogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: .start,
       children: [
-        Image.asset(Imagesconst.logo, height: 200.h, width: 200.w),
+        Center(
+          child: Image.asset(Imagesconst.logo, height: 200.h, width: 200.w),
+        ),
         SizedBox(height: 5.h),
         Text(
-          "WellCome Back",
+          "WelCome Back",
           style: TextStyle(fontSize: 27.sp, fontWeight: .bold),
         ),
         SizedBox(height: 15.h),

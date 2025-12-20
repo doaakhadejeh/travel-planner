@@ -19,7 +19,7 @@ class Registerdata {
       "name": name,
       "email": email,
       "password": password,
-      "confirmation_password": confpassword,
+      "password_confirmation": confpassword,
       "phone_number": phonenumber,
     });
     return response.fold(

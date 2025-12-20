@@ -12,7 +12,6 @@ class Forgetpassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<ForgetpasswordCubit>();
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
@@ -23,11 +22,11 @@ class Forgetpassword extends StatelessWidget {
             Topforgetpassword(),
             SizedBox(height: 10.h),
             Form(
-              key: cubit.formKey,
+              key: context.read<ForgetpasswordCubit>().formKey,
               child: Costomtextformfield(
                 hinttext: 'email',
                 prefixicon: Icons.email,
-                controller: cubit.email,
+                controller: context.read<ForgetpasswordCubit>().email,
                 validatortext: "Please enter a valid email",
               ),
             ),

@@ -11,4 +11,7 @@ class Routconst {
   static const String verifyemail = "/verifyemail";
 
   //
+  static const String itineraryDay = "/itineraryDay";
+  static const String trip = "/trip";
+  static const String activities = "/activities";
 }

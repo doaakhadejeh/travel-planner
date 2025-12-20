@@ -18,7 +18,7 @@ class Resetpassdata {
     var response = await crud.postData(ApiLink.resetPassword, {
       "email": email,
       "password": password,
-      "confirmation_password": confPassword,
+      "password_confirmation": confPassword,
       "code": code,
     });
     return response.fold(

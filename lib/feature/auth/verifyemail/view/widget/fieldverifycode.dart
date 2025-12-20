@@ -15,6 +15,7 @@ class Fieldverifycode extends StatelessWidget {
     return Form(
       key: cubit.formKey,
       child: Column(
+        crossAxisAlignment: .start,
         children: [
           Text(
             "   Enter your email:",
@@ -34,7 +35,7 @@ class Fieldverifycode extends StatelessWidget {
           ),
           SizedBox(height: 40.h),
           Text(
-            "   Enter the verification code:",
+            "       Enter the verification code:",
             style: TextStyle(
               fontWeight: .bold,
               fontSize: 11.sp,

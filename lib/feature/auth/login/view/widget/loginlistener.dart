@@ -15,6 +15,9 @@ class Loginlistener extends StatelessWidget {
         if (state is LoginSuccess) {
           context.go(Routconst.home);
         } else if (state is LoginError) {
+          if (state.error.message == "the email not verified") {
+            context.go(Routconst.verifyemail);
+          }
           myDialog(
             context,
             title: state.error.message,

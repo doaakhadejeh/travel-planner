@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:travel_planner/core/di/dependcy_injection.dart';
 import 'package:travel_planner/core/helper/sharedpref_helper.dart';
 import 'package:travel_planner/core/routing/rout.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await setupGetIt();
   await ScreenUtil.ensureScreenSize();
   await SharedPrefHelper.init();
   runApp(const MyApp());
