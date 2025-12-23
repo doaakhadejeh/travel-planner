@@ -10,7 +10,7 @@ class FavoritePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => getIt<FavouriteCubit>(),
+      create: (_) => getIt<FavouriteCubit>()..getFavourite(),
       child: Favourite(),
     );
   }

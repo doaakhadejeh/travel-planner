@@ -15,6 +15,7 @@ import 'package:travel_planner/feature/auth/resetpassword/logic/cubit/resetpassw
 import 'package:travel_planner/feature/auth/resetpassword/view/resetpassword.dart';
 import 'package:travel_planner/feature/auth/verifyemail/logic/cubit/verifyemail_cubit.dart';
 import 'package:travel_planner/feature/auth/verifyemail/view/verifyemail.dart';
+import 'package:travel_planner/feature/favourite/logic/cubit/favourite_cubit.dart';
 import 'package:travel_planner/feature/home/view/home.dart';
 import 'package:travel_planner/feature/itineraryday/logic/cubit/itineraryday_cubit.dart';
 import 'package:travel_planner/feature/itineraryday/view/itineraryday.dart';
@@ -23,6 +24,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travel_planner/feature/trip/data/model/tripmodel.dart';
 import 'package:travel_planner/feature/trip/logic/cubit/trip_cubit.dart';
 import 'package:travel_planner/feature/trip/view/trip.dart';
+import 'package:travel_planner/feature/userpreferences/logic/cubit/userpreferences_cubit.dart';
+import 'package:travel_planner/feature/userpreferences/view/userpreferences.dart';
 
 final GoRouter router = GoRouter(
   routes: <RouteBase>[
@@ -101,8 +104,13 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: Routconst.trip,
       builder: (BuildContext context, GoRouterState state) {
-        return BlocProvider(
-          create: (context) => getIt<TripCubit>()..getUserTrip(),
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => getIt<TripCubit>()..getUserTrip(),
+            ),
+            BlocProvider(create: (context) => getIt<FavouriteCubit>()),
+          ],
           child: const Trip(),
         );
       },
@@ -117,11 +125,23 @@ final GoRouter router = GoRouter(
         );
       },
     ),
+    GoRoute(
+      path: Routconst.userPref,
+      builder: (BuildContext context, GoRouterState state) {
+        return BlocProvider(
+          create: (context) => getIt<UserpreferencesCubit>()..getPreferences(),
+          child: const UserPreferences(),
+        );
+      },
+    ),
   ],
 
   redirect: (context, state) async {
     final String token = await SharedPrefHelper.getSecuredString("userToken");
     final bool loggedIn = token.isNotEmpty;
+    final bool hasPreferences = await SharedPrefHelper.getBool(
+      "hasPreferences",
+    );
 
     final authRoutes = [
       Routconst.login,
@@ -141,7 +161,15 @@ final GoRouter router = GoRouter(
       return Routconst.master;
     }
 
-    if (loggedIn && state.matchedLocation == Routconst.master) {
+    if (loggedIn &&
+        !hasPreferences &&
+        state.matchedLocation != Routconst.userPref) {
+      return Routconst.userPref;
+    }
+
+    if (loggedIn &&
+        hasPreferences &&
+        state.matchedLocation == Routconst.master) {
       return Routconst.home;
     }
 

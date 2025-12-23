@@ -7,6 +7,7 @@ class TripResponse {
   final DateTime startDay;
   final int days;
   final double budget;
+  bool isFavourite;
   final List<ItineraryDayResponse> itineraryDays;
   final UserResponse user;
 
@@ -18,6 +19,7 @@ class TripResponse {
     required this.budget,
     required this.itineraryDays,
     required this.user,
+    required this.isFavourite,
   });
 
   factory TripResponse.fromJson(Map<dynamic, dynamic> json) {
@@ -33,6 +35,7 @@ class TripResponse {
             )
           : [],
       user: UserResponse.fromJson(json['user']),
+      isFavourite: false,
     );
   }
 }

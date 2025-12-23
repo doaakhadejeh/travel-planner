@@ -1,25 +1,21 @@
+import 'package:travel_planner/feature/trip/data/model/tripmodel.dart';
+
 class FavouriteResponse {
-  // final String token;
-  final String name;
-  // final String email;
-  // final String phoneNumber;
-  // final String role;
+  final int id;
+  final bool isFavourite;
+  final TripResponse trip;
 
   FavouriteResponse({
-    // required this.token,
-    required this.name,
-    // required this.email,
-    // required this.phoneNumber,
-    // required this.role,
+    required this.id,
+    required this.trip,
+    required this.isFavourite,
   });
 
-  factory FavouriteResponse.fromJson(Map json) {
+  factory FavouriteResponse.fromJson(Map<dynamic, dynamic> json) {
     return FavouriteResponse(
-      // token: json['token'],
-      name: json['data']['name'],
-      // email: json['data']['email'],
-      // phoneNumber: json['data']['email'],
-      // role: json['data']['email'],
+      id: json['id'],
+      isFavourite: json['is_favorite'] ?? false,
+      trip: TripResponse.fromJson(json['trip']),
     );
   }
 }

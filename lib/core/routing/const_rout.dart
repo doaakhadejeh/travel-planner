@@ -14,4 +14,5 @@ class Routconst {
   static const String itineraryDay = "/itineraryDay";
   static const String trip = "/trip";
   static const String activities = "/activities";
+  static const String userPref = "/userpref";
 }

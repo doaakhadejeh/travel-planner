@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:travel_planner/feature/trip/data/model/tripmodel.dart';
+import 'package:travel_planner/feature/trip/view/widget/footerlistviewtrip.dart';
 import 'package:travel_planner/feature/trip/view/widget/toplistviewtrip.dart';
 
 class ContentTrip extends StatelessWidget {
@@ -25,7 +26,7 @@ class ContentTrip extends StatelessWidget {
         SizedBox(height: 2.h),
         Text("start day: ${trip.startDay}"),
         SizedBox(height: 2.h),
-        Text("the budget : ${trip.budget}\$"),
+        FooterListViewTrip(trip: trip),
       ],
     );
   }

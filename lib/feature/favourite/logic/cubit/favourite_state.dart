@@ -1,4 +1,6 @@
 import 'package:equatable/equatable.dart';
+import 'package:travel_planner/core/network/api_error_model.dart';
+import 'package:travel_planner/feature/favourite/data/model/favouritemodel.dart';
 
 sealed class FavouriteState extends Equatable {}
 
@@ -14,19 +16,15 @@ class FavouriteLoading extends FavouriteState {
 }
 
 class FavouriteSuccess extends FavouriteState {
-  // final ForgetPasswordResponse response;
-  // FavouriteSuccess(this.response);
+  final List<FavouriteResponse> response;
+  FavouriteSuccess(this.response);
   @override
-  List<Object?> get props => [
-    // response
-  ];
+  List<Object?> get props => [response];
 }
 
 class FavouriteError extends FavouriteState {
-  // final Failure error;
-  // FavouriteError(this.error);
+  final Failure error;
+  FavouriteError(this.error);
   @override
-  List<Object?> get props => [
-    // error
-  ];
+  List<Object?> get props => [error];
 }
