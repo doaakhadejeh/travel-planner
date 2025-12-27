@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,12 +12,18 @@ class SubtitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final favCubit = context.watch<FavouriteCubit>();
+    final isFav = favCubit.favouriteTripIds.contains(favourite.trip.id);
     return Column(
+      crossAxisAlignment: .start,
       children: [
+        SizedBox(height: 5.h),
         Text('the budget:${favourite.trip.budget}'),
-        SizedBox(height: 5.h),
-        Text('start day:${favourite.trip.startDay}'),
-        SizedBox(height: 5.h),
+        SizedBox(height: 2.h),
+        Text(
+          'start day:${DateFormat('yyyy-MM-dd').format(favourite.trip.startDay)}',
+        ),
+        SizedBox(height: 7.h),
         Row(
           mainAxisAlignment: .spaceBetween,
           children: [
@@ -28,9 +35,7 @@ class SubtitleWidget extends StatelessWidget {
                 );
               },
               icon: Icon(
-                favourite.trip.isFavourite
-                    ? Icons.favorite
-                    : Icons.favorite_border,
+                isFav ? Icons.favorite : Icons.favorite_border,
                 color: Colors.red,
               ),
             ),

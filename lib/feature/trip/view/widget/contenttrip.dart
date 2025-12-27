@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:travel_planner/feature/trip/data/model/tripmodel.dart';
@@ -24,7 +25,7 @@ class ContentTrip extends StatelessWidget {
         SizedBox(height: 10.h),
         Text("${trip.days} days"),
         SizedBox(height: 2.h),
-        Text("start day: ${trip.startDay}"),
+        Text("start day: ${DateFormat('yyyy-MM-dd').format(trip.startDay)}"),
         SizedBox(height: 2.h),
         FooterListViewTrip(trip: trip),
       ],

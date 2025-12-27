@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:travel_planner/core/constant/imagesconst.dart';
 import 'package:travel_planner/feature/homescreen/view/widget/buttongeneratetrip.dart';
 import 'package:travel_planner/feature/homescreen/view/widget/buttongotomytrip.dart';
 import 'package:travel_planner/feature/homescreen/view/widget/contenthome.dart';
 import 'package:travel_planner/feature/homescreen/view/widget/homescreenlistener.dart';
-import 'package:travel_planner/feature/homescreen/view/widget/tophome.dart';
 
 class Homescreen extends StatelessWidget {
   const Homescreen({super.key});
@@ -13,19 +14,31 @@ class Homescreen extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: Colors.grey,
-      body: Column(
-        crossAxisAlignment: .center,
-        children: [
-          Stack(
-            children: [
-              TopHome(),
-              ContentHome(),
-              ButtonGenerateTrip(),
-              ButtonGoToMyTrip(),
-            ],
+      body: SingleChildScrollView(
+        child: Container(
+          height: 700.h,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(Imagesconst.home1),
+              fit: BoxFit.cover,
+            ),
           ),
-          Homescreenlistener(),
-        ],
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              children: [
+                SizedBox(height: 70.h),
+                ContentHome(),
+                SizedBox(height: 100.h),
+                ButtonGenerateTrip(),
+                SizedBox(height: 5.h),
+                ButtonGoToMyTrip(),
+                Homescreenlistener(),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

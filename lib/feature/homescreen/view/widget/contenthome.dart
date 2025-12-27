@@ -7,22 +7,17 @@ class ContentHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 250,
-      right: 10,
-      left: 10,
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Container(
-          padding: EdgeInsets.all(7),
-          height: 250.h,
-          width: 400.w,
-          decoration: BoxDecoration(
-            border: Border.all(width: 2.sp, color: Colors.black),
-            borderRadius: BorderRadius.circular(15),
-          ),
-          child: FieldHome(),
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: Container(
+        padding: EdgeInsets.all(7),
+        height: 280.h,
+        width: 400.w,
+        decoration: BoxDecoration(
+          border: Border.all(width: 2.sp, color: Colors.black),
+          borderRadius: BorderRadius.circular(15),
         ),
+        child: FieldHome(),
       ),
     );
   }

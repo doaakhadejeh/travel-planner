@@ -14,7 +14,7 @@ class ButtonShowActivity extends StatelessWidget {
       alignment: .bottomRight,
       child: InkWell(
         onTap: () {
-          context.go("${Routconst.activities}/${itineraryDay.id}");
+          context.push("${Routconst.activities}/${itineraryDay.id}");
         },
         child: Text(
           "show activities",

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:travel_planner/core/helper/dialoghelper.dart';
+import 'package:travel_planner/core/routing/const_rout.dart';
 import 'package:travel_planner/feature/userpreferences/logic/cubit/userpreferences_cubit.dart';
 import 'package:travel_planner/feature/userpreferences/logic/cubit/userpreferences_state.dart';
 
@@ -11,6 +13,10 @@ class UserPrefListiner extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<UserpreferencesCubit, UserpreferencesState>(
       listener: (context, state) {
+        if (state is UserpreferencesSaveSuccess) {
+          context.go(Routconst.home);
+        }
+
         if (state is UserpreferencesError) {
           myDialog(
             context,

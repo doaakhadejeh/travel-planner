@@ -14,6 +14,12 @@ class Favourite extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            context.read<FavouriteCubit>().getFavourite();
+          },
+          icon: Icon(Icons.refresh),
+        ),
         title: Text(
           "My Favourite",
           style: TextStyle(fontWeight: .bold, fontSize: 30.sp),

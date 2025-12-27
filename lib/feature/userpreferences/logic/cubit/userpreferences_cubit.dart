@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:travel_planner/core/helper/sharedpref_helper.dart';
 import 'package:travel_planner/feature/userpreferences/data/remote/Userpreferencesremote.dart';
 import 'package:travel_planner/feature/userpreferences/logic/cubit/userpreferences_state.dart';
 
@@ -19,16 +20,27 @@ class UserpreferencesCubit extends Cubit<UserpreferencesState> {
     emit(UserpreferencesLoading());
 
     final response = await userpreferencesdata.getPreferences();
-    response.fold(
-      (failure) => emit(UserpreferencesError(failure)),
-      (prefsResponse) => emit(UserpreferencesSuccess(prefsResponse)),
-    );
+    response.fold((failure) => emit(UserpreferencesError(failure)), (
+      prefsResponse,
+    ) {
+      if (prefsResponse.isNotEmpty) {
+        final firstPref = prefsResponse.first;
+
+        travelStyle.text = firstPref.travelStyle;
+        preferredBudgetMin.text = firstPref.preferredBudgetMin.toString();
+        preferredBudgetMax.text = firstPref.preferredBudgetMax.toString();
+        preferredCountries.text = firstPref.preferredCountries;
+        preferredFood.text = firstPref.preferredFood;
+        interests.text = firstPref.interests;
+      }
+      emit(UserpreferencesSuccess(prefsResponse));
+    });
   }
 
   Future<void> addPreference() async {
-    if (state is! UserpreferencesSuccess) return;
+    final currentState = state as UserpreferencesSuccess;
 
-    final current = (state as UserpreferencesSuccess).response;
+    final current = currentState.response;
     Map<dynamic, dynamic> data = {
       'travel_style': travelStyle.text,
       'preferred_budget_min': preferredBudgetMin.text,
@@ -47,8 +59,6 @@ class UserpreferencesCubit extends Cubit<UserpreferencesState> {
   }
 
   Future<void> updatePreference(int id) async {
-    if (state is! UserpreferencesSuccess) return;
-
     final current = [...(state as UserpreferencesSuccess).response];
 
     final index = current.indexWhere((e) => e.id == id);
@@ -66,33 +76,30 @@ class UserpreferencesCubit extends Cubit<UserpreferencesState> {
     final response = await userpreferencesdata.updatePreference(id, data);
     response.fold((failure) => emit(UserpreferencesError(failure)), (updated) {
       current[index] = updated;
-      emit(UserpreferencesSuccess(current));
+      emit(UserpreferencesSaveSuccess(current));
     });
   }
 
   Future<void> deletePreference(int id) async {
-    if (state is! UserpreferencesSuccess) return;
-
     final current = [...(state as UserpreferencesSuccess).response];
 
     final response = await userpreferencesdata.deletePreference(id);
     response.fold((failure) => emit(UserpreferencesError(failure)), (_) {
       current.removeWhere((e) => e.id == id);
-      emit(UserpreferencesSuccess(current));
+      emit(UserpreferencesSaveSuccess(current));
     });
   }
 
   Future<void> saveOrUpdate() async {
     if (!formKey.currentState!.validate()) return;
-    emit(UserpreferencesLoading());
+    final currentState = state;
 
-    if (state is UserpreferencesSuccess) {
-      if ((state as UserpreferencesSuccess).response.isEmpty) {
+    if (currentState is UserpreferencesSuccess) {
+      if (currentState.response.isEmpty) {
         await addPreference();
+        await SharedPrefHelper.setData("hasPreferences", true);
       } else {
-        await updatePreference(
-          (state as UserpreferencesSuccess).response.first.id,
-        );
+        await updatePreference(currentState.response.first.id);
       }
     }
   }

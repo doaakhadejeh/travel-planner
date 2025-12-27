@@ -18,7 +18,7 @@ class SavePreferenceButton extends StatelessWidget {
           radiusRectangleBorder: 10.sp,
           child: Text(
             state is UserpreferencesLoading
-                ? "Saving..."
+                ? "wait..."
                 : state is UserpreferencesSuccess && state.response.isNotEmpty
                 ? "Update"
                 : "Save",

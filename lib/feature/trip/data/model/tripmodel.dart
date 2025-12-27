@@ -35,7 +35,7 @@ class TripResponse {
             )
           : [],
       user: UserResponse.fromJson(json['user']),
-      isFavourite: false,
+      isFavourite: json['is_favorite'] ?? false,
     );
   }
 }

@@ -13,6 +13,11 @@ class SharedPrefHelper {
     _secureStorage = FlutterSecureStorage();
   }
 
+  static Future<void> logout() async {
+    await clearAllSecuredData();
+    await clearAllData();
+  }
+
   static String getStringSync(String key) {
     return _prefs?.getString(key) ?? '';
   }

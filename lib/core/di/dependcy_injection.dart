@@ -20,8 +20,8 @@ import 'package:travel_planner/feature/homescreen/data/remote/homescreenremote.d
 import 'package:travel_planner/feature/homescreen/logic/cubit/homescreen_cubit.dart';
 import 'package:travel_planner/feature/itineraryday/data/remote/itinerarydayremote.dart';
 import 'package:travel_planner/feature/itineraryday/logic/cubit/itineraryday_cubit.dart';
-import 'package:travel_planner/feature/setting/data/remote/settingremote.dart';
-import 'package:travel_planner/feature/setting/logic/cubit/setting_cubit.dart';
+import 'package:travel_planner/feature/profile/data/remote/profileremote.dart';
+import 'package:travel_planner/feature/profile/logic/cubit/profile_cubit.dart';
 import 'package:travel_planner/feature/trip/data/remote/tripmodel.dart';
 import 'package:travel_planner/feature/trip/logic/cubit/trip_cubit.dart';
 import 'package:travel_planner/feature/userpreferences/data/remote/Userpreferencesremote.dart';
@@ -74,10 +74,6 @@ Future<void> setupGetIt() async {
   );
   getIt.registerFactory<FavouriteCubit>(() => FavouriteCubit(getIt()));
 
-  // setting
-  getIt.registerLazySingleton<Settingdata>(() => Settingdata(getIt<Crud>()));
-  getIt.registerFactory<SettingCubit>(() => SettingCubit(getIt()));
-
   // itinerary day
   getIt.registerLazySingleton<Itinerarydaydata>(
     () => Itinerarydaydata(getIt<Crud>()),
@@ -99,4 +95,8 @@ Future<void> setupGetIt() async {
   getIt.registerFactory<UserpreferencesCubit>(
     () => UserpreferencesCubit(getIt()),
   );
+
+  // profile
+  getIt.registerLazySingleton<Profiledata>(() => Profiledata(getIt<Crud>()));
+  getIt.registerFactory<ProfileCubit>(() => ProfileCubit(getIt()));
 }

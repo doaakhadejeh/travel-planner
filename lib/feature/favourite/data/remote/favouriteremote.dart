@@ -10,11 +10,10 @@ class Favouritedata {
 
   Future<Either<Failure, List<FavouriteResponse>>> myFavourite() async {
     var response = await crud.getData(ApiLink.myFavorites);
-    return response.fold(
-      (l) => Left(l),
-      (r) =>
-          Right((r as List).map((x) => FavouriteResponse.fromJson(x)).toList()),
-    );
+    return response.fold((l) => Left(l), (r) {
+      final List data = r['data'];
+      return Right(data.map((x) => FavouriteResponse.fromJson(x)).toList());
+    });
   }
 
   Future<Either<Failure, Unit>> removeFavourite(int tripId) async {

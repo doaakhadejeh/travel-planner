@@ -17,32 +17,32 @@ class ListviewItineraryDay extends StatelessWidget {
 
         return Padding(
           padding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 15.w),
-          child: Container(
-            height: 120.h,
-            width: 300.w,
-            decoration: BoxDecoration(
-              color: Colors.grey.shade50,
+          child: Card(
+            shape: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: Colors.green),
+              borderSide: BorderSide(color: Colors.green),
             ),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: .start,
-                mainAxisAlignment: .spaceEvenly,
-                children: [
-                  TopListviewDay(itineraryDay: itineraryDay),
+              child: SizedBox(
+                height: 110.h,
+                child: Column(
+                  crossAxisAlignment: .start,
+                  mainAxisAlignment: .spaceEvenly,
+                  children: [
+                    TopListviewDay(itineraryDay: itineraryDay),
 
-                  Text(
-                    "summary: ${itineraryDay.summary} ",
-                    style: TextStyle(
-                      overflow: .clip,
-                      fontSize: 10.sp,
-                      color: Colors.grey,
+                    Text(
+                      "summary: ${itineraryDay.summary} ",
+                      style: TextStyle(
+                        overflow: .clip,
+                        fontSize: 10.sp,
+                        color: Colors.grey,
+                      ),
                     ),
-                  ),
-                  ButtonShowActivity(itineraryDay: itineraryDay),
-                ],
+                    ButtonShowActivity(itineraryDay: itineraryDay),
+                  ],
+                ),
               ),
             ),
           ),

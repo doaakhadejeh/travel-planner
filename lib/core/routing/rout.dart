@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:travel_planner/core/di/dependcy_injection.dart';
 import 'package:travel_planner/core/helper/sharedpref_helper.dart';
 import 'package:travel_planner/core/routing/const_rout.dart';
+import 'package:travel_planner/feature/aboutus/aboutus.dart';
 import 'package:travel_planner/feature/activity/logic/cubit/activity_cubit.dart';
 import 'package:travel_planner/feature/activity/view/activity.dart';
 import 'package:travel_planner/feature/auth/forgetpassword/logic/cubit/forgetpassword_cubit.dart';
@@ -21,6 +22,10 @@ import 'package:travel_planner/feature/itineraryday/logic/cubit/itineraryday_cub
 import 'package:travel_planner/feature/itineraryday/view/itineraryday.dart';
 import 'package:travel_planner/feature/onbording/onbording.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:travel_planner/feature/profile/logic/cubit/profile_cubit.dart';
+import 'package:travel_planner/feature/profile/view/profile.dart';
+import 'package:travel_planner/feature/profile/view/updatepassword.dart';
+import 'package:travel_planner/feature/profile/view/updateprofile.dart';
 import 'package:travel_planner/feature/trip/data/model/tripmodel.dart';
 import 'package:travel_planner/feature/trip/logic/cubit/trip_cubit.dart';
 import 'package:travel_planner/feature/trip/view/trip.dart';
@@ -89,11 +94,11 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: Routconst.itineraryDay,
       builder: (BuildContext context, GoRouterState state) {
-        final trip = state.extra as TripResponse;
         return BlocProvider(
           create: (context) {
             final cubit = getIt<ItineraryDayCubit>();
-            cubit.setTrip(trip);
+            final trip = state.extra;
+            cubit.setTrip(trip as TripResponse);
             cubit.getTripDay();
             return cubit;
           },
@@ -109,7 +114,9 @@ final GoRouter router = GoRouter(
             BlocProvider(
               create: (context) => getIt<TripCubit>()..getUserTrip(),
             ),
-            BlocProvider(create: (context) => getIt<FavouriteCubit>()),
+            BlocProvider(
+              create: (context) => getIt<FavouriteCubit>()..getFavourite(),
+            ),
           ],
           child: const Trip(),
         );
@@ -132,6 +139,40 @@ final GoRouter router = GoRouter(
           create: (context) => getIt<UserpreferencesCubit>()..getPreferences(),
           child: const UserPreferences(),
         );
+      },
+    ),
+    GoRoute(
+      path: Routconst.profile,
+      builder: (BuildContext context, GoRouterState state) {
+        return BlocProvider(
+          create: (context) => getIt<ProfileCubit>()..getProfile(),
+          child: const Profile(),
+        );
+      },
+    ),
+    GoRoute(
+      path: Routconst.updateProfile,
+      builder: (BuildContext context, GoRouterState state) {
+        return BlocProvider(
+          create: (context) => getIt<ProfileCubit>(),
+          child: const UpdateProfile(),
+        );
+      },
+    ),
+    GoRoute(
+      path: Routconst.updatePassword,
+      builder: (BuildContext context, GoRouterState state) {
+        return BlocProvider(
+          create: (context) => getIt<ProfileCubit>(),
+          child: const UpdatePassword(),
+        );
+      },
+    ),
+
+    GoRoute(
+      path: Routconst.aboutUs,
+      builder: (BuildContext context, GoRouterState state) {
+        return const AboutUs();
       },
     ),
   ],

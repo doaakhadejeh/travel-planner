@@ -14,7 +14,8 @@ Future<void> myDialog(
           children: [
             Text(
               title,
-              style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+              overflow: .ellipsis,
+              style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.bold),
             ),
           ],
         ),

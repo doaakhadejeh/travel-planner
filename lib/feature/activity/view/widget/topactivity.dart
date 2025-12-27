@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:travel_planner/core/constant/imagesconst.dart';
-import 'package:travel_planner/core/routing/const_rout.dart';
 
 class Topactivity extends StatelessWidget {
   const Topactivity({super.key});
@@ -25,17 +23,17 @@ class Topactivity extends StatelessWidget {
               fit: .contain,
             ),
           ),
-          Positioned(
-            top: 70.h,
-            left: 0.w,
+          // Positioned(
+          //   top: 70.h,
+          //   left: 0.w,
 
-            child: IconButton(
-              onPressed: () {
-                context.go(Routconst.trip);
-              },
-              icon: Icon(Icons.arrow_back, color: Colors.white),
-            ),
-          ),
+          //   child: IconButton(
+          //     onPressed: () {
+          //       context.go(Routconst.trip);
+          //     },
+          //     icon: Icon(Icons.arrow_back, color: Colors.white),
+          //   ),
+          // ),
           Positioned(
             top: 70.h,
             right: 4.w,

@@ -28,3 +28,10 @@ class UserpreferencesError extends UserpreferencesState {
   @override
   List<Object?> get props => [error];
 }
+
+class UserpreferencesSaveSuccess extends UserpreferencesState {
+  final List<UserPreferenceResponse> response;
+  UserpreferencesSaveSuccess(this.response);
+  @override
+  List<Object?> get props => [response];
+}

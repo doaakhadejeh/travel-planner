@@ -15,4 +15,8 @@ class Routconst {
   static const String trip = "/trip";
   static const String activities = "/activities";
   static const String userPref = "/userpref";
+  static const String aboutUs = "/aboutAs";
+  static const String profile = "/profile";
+  static const String updatePassword = "/updatePassword";
+  static const String updateProfile = "/updateProfile";
 }

@@ -5,6 +5,7 @@ import 'package:travel_planner/feature/favourite/logic/cubit/favourite_state.dar
 class FavouriteCubit extends Cubit<FavouriteState> {
   final Favouritedata favouritedata;
   FavouriteCubit(this.favouritedata) : super(FavouriteInitial());
+  Set<int> favouriteTripIds = {};
 
   Future<void> getFavourite() async {
     emit(FavouriteLoading());
@@ -14,35 +15,33 @@ class FavouriteCubit extends Cubit<FavouriteState> {
         emit(FavouriteError(failure));
       },
       (favouriteResponse) {
+        favouriteTripIds = favouriteResponse.map((e) => e.trip.id).toSet();
         emit(FavouriteSuccess(favouriteResponse));
       },
     );
   }
 
   Future<void> toggleFavourite(int tripId) async {
-    if (state is! FavouriteSuccess) return;
+    final isAdded = favouriteTripIds.contains(tripId);
 
-    final currentState = state as FavouriteSuccess;
+    if (isAdded) {
+      favouriteTripIds.remove(tripId);
+    } else {
+      favouriteTripIds.add(tripId);
+    }
+    emit(FavouriteUpdated(favouriteTripIds));
 
-    final updatedList = [...currentState.response];
+    final response = isAdded
+        ? await favouritedata.removeFavourite(tripId)
+        : await favouritedata.addFavourite(tripId);
 
-    final index = updatedList.indexWhere((f) => f.trip.id == tripId);
-    if (index == -1) return;
-
-    final favItem = updatedList[index];
-
-    favItem.trip.isFavourite = !favItem.trip.isFavourite;
-
-    emit(FavouriteSuccess(updatedList));
-
-    final response = favItem.trip.isFavourite
-        ? await favouritedata.addFavourite(tripId)
-        : await favouritedata.removeFavourite(tripId);
-
-    response.fold((failure) {
-      favItem.trip.isFavourite = !favItem.trip.isFavourite;
-      emit(FavouriteError(failure));
-      emit(FavouriteSuccess(updatedList));
+    response.fold((f) {
+      if (isAdded) {
+        favouriteTripIds.add(tripId);
+      } else {
+        favouriteTripIds.remove(tripId);
+      }
+      emit(FavouriteError(f));
     }, (_) {});
   }
 }

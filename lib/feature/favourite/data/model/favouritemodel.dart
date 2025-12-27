@@ -15,7 +15,7 @@ class FavouriteResponse {
     return FavouriteResponse(
       id: json['id'],
       isFavourite: json['is_favorite'] ?? false,
-      trip: TripResponse.fromJson(json['trip']),
+      trip: TripResponse.fromJson(json),
     );
   }
 }

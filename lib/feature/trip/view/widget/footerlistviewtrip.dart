@@ -11,17 +11,19 @@ class FooterListViewTrip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: .spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text("the budget : ${trip.budget}\$"),
         BlocBuilder<FavouriteCubit, FavouriteState>(
           builder: (context, state) {
+            final favCubit = context.watch<FavouriteCubit>();
+            final isFav = favCubit.favouriteTripIds.contains(trip.id);
             return IconButton(
               onPressed: () {
                 context.read<FavouriteCubit>().toggleFavourite(trip.id);
               },
               icon: Icon(
-                trip.isFavourite ? Icons.favorite : Icons.favorite_border,
+                isFav ? Icons.favorite : Icons.favorite_border,
                 color: Colors.red,
               ),
             );

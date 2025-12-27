@@ -9,23 +9,18 @@ class ButtonGoToMyTrip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 50.h,
-      right: 30.w,
-      left: 30.w,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.w),
-        child: Custombutton(
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.black,
-          borderColor: Colors.black,
-          onPressed: () {
-            context.go(Routconst.trip);
-          },
-          isRectangleBorder: true,
-          radiusRectangleBorder: 10,
-          child: Text("go to my trip"),
-        ),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10.w),
+      child: Custombutton(
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        borderColor: Colors.black,
+        onPressed: () {
+          context.push(Routconst.trip);
+        },
+        isRectangleBorder: true,
+        radiusRectangleBorder: 10,
+        child: Text("go to my trip"),
       ),
     );
   }

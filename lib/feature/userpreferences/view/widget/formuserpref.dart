@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travel_planner/core/widget/costomtextformfield.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:travel_planner/feature/userpreferences/logic/cubit/userpreferences_cubit.dart';
 
 class UserPreferencesForm extends StatelessWidget {
@@ -13,24 +14,26 @@ class UserPreferencesForm extends StatelessWidget {
       crossAxisAlignment: .start,
       children: [
         Costomtextformfield(
-          hinttext: 'travel_style',
+          hinttext: 'travel style',
           prefixicon: Icons.explore,
           controller: cubit.travelStyle,
         ),
+        SizedBox(height: 5.h),
         Row(
           children: [
             Expanded(
               child: Costomtextformfield(
-                hinttext: 'preferred_budget_min',
+                hinttext: 'budget min',
                 prefixicon: Icons.trending_down,
                 validatortext: 'please fill this field!',
                 controller: cubit.preferredBudgetMin,
                 typekeybord: .number,
               ),
             ),
+            SizedBox(width: 5.w),
             Expanded(
               child: Costomtextformfield(
-                hinttext: 'preferred_budget_max',
+                hinttext: 'budget max',
                 prefixicon: Icons.trending_up,
                 validatortext: 'please fill this field!',
                 controller: cubit.preferredBudgetMax,
@@ -39,24 +42,28 @@ class UserPreferencesForm extends StatelessWidget {
             ),
           ],
         ),
+        SizedBox(height: 5.h),
         Costomtextformfield(
-          hinttext: 'preferred_countries',
+          hinttext: 'preferred countries',
           prefixicon: Icons.public,
           validatortext: 'please fill this field!',
           controller: cubit.preferredCountries,
         ),
+        SizedBox(height: 5.h),
         Costomtextformfield(
-          hinttext: 'preferred_food',
+          hinttext: 'preferred food',
           prefixicon: Icons.restaurant,
           validatortext: 'please fill this field!',
           controller: cubit.preferredFood,
         ),
+        SizedBox(height: 5.h),
         Costomtextformfield(
           hinttext: 'interests',
           prefixicon: Icons.star,
           validatortext: 'please fill this field!',
           controller: cubit.interests,
         ),
+        SizedBox(height: 20.h),
       ],
     );
   }

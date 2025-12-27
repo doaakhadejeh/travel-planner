@@ -11,37 +11,32 @@ class Widgetsuccesstrip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 100.h,
-      left: 10.w,
-      right: 10.w,
-      child: Expanded(
-        child: ListView.builder(
-          itemCount: trips.length,
-          itemBuilder: (context, i) {
-            final trip = trips[i];
-            return InkWell(
-              onTap: () {
-                context.push(Routconst.itineraryDay, extra: trip);
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 130.h,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.green, width: 1.w),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ContentTrip(trip: trip),
-                  ),
+    return Expanded(
+      child: ListView.builder(
+        itemCount: trips.length,
+        itemBuilder: (context, i) {
+          final trip = trips[i];
+          return InkWell(
+            onTap: () {
+              context.push(Routconst.itineraryDay, extra: trip);
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                height: 150.h,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: Colors.green, width: 1.w),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ContentTrip(trip: trip),
                 ),
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

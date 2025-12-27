@@ -28,3 +28,10 @@ class FavouriteError extends FavouriteState {
   @override
   List<Object?> get props => [error];
 }
+
+class FavouriteUpdated extends FavouriteState {
+  final Set<int> favouriteTripIds;
+  FavouriteUpdated(this.favouriteTripIds);
+  @override
+  List<Object?> get props => [favouriteTripIds];
+}
