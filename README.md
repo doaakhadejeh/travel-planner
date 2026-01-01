@@ -45,7 +45,7 @@ based on their destination, budget, and trip duration.
 
 ### 🌟 Onboarding & Introduction
 | Welcome Screen |
-|-------|
+|----------------|
 | <img src="screenshots/onboarding.png" width="200">
 
 
@@ -60,7 +60,7 @@ based on their destination, budget, and trip duration.
 
 ### ✈️ Trip Planning & AI
 | User Preference |
-|-------|---------| 
+|-----------------| 
 | <img src="screenshots/userpref.png" width="200"> |
 |--------------------------------------------------|
 
