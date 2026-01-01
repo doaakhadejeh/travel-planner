@@ -40,8 +40,6 @@ based on their destination, budget, and trip duration.
 
 ---
 
-## Screenshots
-📸 Screenshots will be added soon.
 
 ## 📸 Screenshots
 
@@ -56,16 +54,18 @@ based on their destination, budget, and trip duration.
 | Login | Register | OTP Verification |
 |-------|----------|------------------|
 | <img src="screenshots/login.png" width="200"> | <img src="screenshots/register.png" width="200"> | <img src="screenshots/verifyemail.png" width="200"> |
-
+|-------|----------|------------------|
 | Forget Password | Reset Password With Verification |
 | <img src="screenshots/forgetpassword.png" width="200"> | <img src="screenshots/resetpassword.png" width="200"> |
 
 ### ✈️ Trip Planning & AI
 | User Preference |
+|-------|---------| 
 | <img src="screenshots/userpref.png" width="200"> |
+|--------------------------------------------------|
 
 | Generate Trip | Trip | Itinerary Days | Activity |
-|---------------|----------------|----------------|
+|---------------|------|----------------|----------|
 | <img src="screenshots/generatetrip.png" width="200"> | <img src="screenshots/trip.png" width="200"> | <img src="screenshots/days.png" width="200"> | <img src="screenshots/activity.png" width="200"> |
 
 ### 🛠️ Admin & Profile
