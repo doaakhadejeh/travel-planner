@@ -12,15 +12,22 @@ Future<void> myDialog(
       return AlertDialog(
         title: Row(
           children: [
-            Text(
-              title,
-              overflow: .ellipsis,
-              style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.bold),
+            Expanded(
+              child: Text(
+                title,
+                overflow: .clip,
+                maxLines: 1,
+                style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.bold),
+              ),
             ),
           ],
         ),
         content: content,
-        shape: Border.all(color: Colors.green),
+        shape: RoundedRectangleBorder(
+          side: BorderSide(color: Colors.green),
+          borderRadius: BorderRadius.circular(12),
+        ),
+
         backgroundColor: Colors.white,
 
         contentTextStyle: TextStyle(

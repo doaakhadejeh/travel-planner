@@ -33,7 +33,6 @@ class Profile extends StatelessWidget {
                 child: CircularProgressIndicator(color: Colors.green),
               );
             }
-
             if (state is ProfileSuccess) {
               final profile = state.response;
               return WidgetsuccessProfile(profile: profile);

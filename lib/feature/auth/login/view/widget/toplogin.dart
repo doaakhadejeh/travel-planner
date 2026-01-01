@@ -15,7 +15,7 @@ class Toplogin extends StatelessWidget {
         ),
         SizedBox(height: 5.h),
         Text(
-          "WelCome Back",
+          "WellCome Back",
           style: TextStyle(fontSize: 27.sp, fontWeight: .bold),
         ),
         SizedBox(height: 15.h),

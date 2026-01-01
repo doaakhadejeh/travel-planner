@@ -14,10 +14,10 @@ class ListviewItineraryDay extends StatelessWidget {
       itemCount: itineraryDays.length,
       itemBuilder: (context, i) {
         final itineraryDay = itineraryDays[i];
-
         return Padding(
           padding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 15.w),
           child: Card(
+            color: Colors.white.withAlpha((0.8 * 255).round()),
             shape: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
               borderSide: BorderSide(color: Colors.green),
@@ -31,14 +31,11 @@ class ListviewItineraryDay extends StatelessWidget {
                   mainAxisAlignment: .spaceEvenly,
                   children: [
                     TopListviewDay(itineraryDay: itineraryDay),
-
                     Text(
                       "summary: ${itineraryDay.summary} ",
-                      style: TextStyle(
-                        overflow: .clip,
-                        fontSize: 10.sp,
-                        color: Colors.grey,
-                      ),
+                      style: TextStyle(fontSize: 10.sp, color: Colors.grey),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     ButtonShowActivity(itineraryDay: itineraryDay),
                   ],

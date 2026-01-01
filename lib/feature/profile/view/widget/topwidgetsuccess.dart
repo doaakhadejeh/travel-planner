@@ -24,7 +24,6 @@ class TopWidgetSuccess extends StatelessWidget {
               showImagePickerBottomSheet(context, cubit);
             },
           ),
-
           SizedBox(
             height: 120.h,
             width: 120.w,

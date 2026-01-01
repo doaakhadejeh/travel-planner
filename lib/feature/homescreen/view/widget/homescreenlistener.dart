@@ -19,7 +19,6 @@ class Homescreenlistener extends StatelessWidget {
             title: "generate your trip done ",
             content: const Icon(Icons.check_circle, color: Colors.green),
           );
-          context.go(Routconst.itineraryDay);
         } else if (state is HomescreenError) {
           myDialog(
             context,

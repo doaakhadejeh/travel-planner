@@ -48,7 +48,6 @@ class _WidgetFieldUpdatePasswordState extends State<WidgetFieldUpdatePassword> {
             validatortext: "please enter your new password",
           ),
           SizedBox(height: 3.h),
-
           Costomtextformfield(
             hinttext: 'confirm password',
             prefixicon: hidepassword ? Icons.visibility_off : Icons.visibility,

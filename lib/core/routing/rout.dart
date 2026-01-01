@@ -18,6 +18,7 @@ import 'package:travel_planner/feature/auth/verifyemail/logic/cubit/verifyemail_
 import 'package:travel_planner/feature/auth/verifyemail/view/verifyemail.dart';
 import 'package:travel_planner/feature/favourite/logic/cubit/favourite_cubit.dart';
 import 'package:travel_planner/feature/home/view/home.dart';
+import 'package:travel_planner/feature/homeadmin/homeadmin.dart';
 import 'package:travel_planner/feature/itineraryday/logic/cubit/itineraryday_cubit.dart';
 import 'package:travel_planner/feature/itineraryday/view/itineraryday.dart';
 import 'package:travel_planner/feature/onbording/onbording.dart';
@@ -38,6 +39,12 @@ final GoRouter router = GoRouter(
       path: Routconst.home,
       builder: (BuildContext context, GoRouterState state) {
         return const MyHomePage();
+      },
+    ),
+    GoRoute(
+      path: Routconst.homeAdmin,
+      builder: (BuildContext context, GoRouterState state) {
+        return const HomeAdmin();
       },
     ),
     GoRoute(
@@ -98,8 +105,11 @@ final GoRouter router = GoRouter(
           create: (context) {
             final cubit = getIt<ItineraryDayCubit>();
             final trip = state.extra;
-            cubit.setTrip(trip as TripResponse);
-            cubit.getTripDay();
+
+            if (trip != null && trip is TripResponse) {
+              cubit.setTrip(trip);
+              cubit.getTripDay();
+            }
             return cubit;
           },
           child: const Itineraryday(),
@@ -183,6 +193,7 @@ final GoRouter router = GoRouter(
     final bool hasPreferences = await SharedPrefHelper.getBool(
       "hasPreferences",
     );
+    final String role = await SharedPrefHelper.getString("role");
 
     final authRoutes = [
       Routconst.login,
@@ -194,26 +205,27 @@ final GoRouter router = GoRouter(
 
     final bool isAuthRoute = authRoutes.contains(state.matchedLocation);
 
-    if (!loggedIn && isAuthRoute) {
-      return null;
-    }
-
     if (!loggedIn && !isAuthRoute) {
       return Routconst.master;
     }
-
     if (loggedIn &&
+        role == "user" &&
         !hasPreferences &&
         state.matchedLocation != Routconst.userPref) {
       return Routconst.userPref;
     }
-
     if (loggedIn &&
+        role == "user" &&
         hasPreferences &&
         state.matchedLocation == Routconst.master) {
       return Routconst.home;
     }
 
+    if (loggedIn &&
+        role == "admin" &&
+        state.matchedLocation == Routconst.master) {
+      return Routconst.homeAdmin;
+    }
     return null;
   },
 );

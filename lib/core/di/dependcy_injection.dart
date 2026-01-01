@@ -24,6 +24,8 @@ import 'package:travel_planner/feature/profile/data/remote/profileremote.dart';
 import 'package:travel_planner/feature/profile/logic/cubit/profile_cubit.dart';
 import 'package:travel_planner/feature/trip/data/remote/tripmodel.dart';
 import 'package:travel_planner/feature/trip/logic/cubit/trip_cubit.dart';
+import 'package:travel_planner/feature/useradmin/data/remot/useradminremte.dart';
+import 'package:travel_planner/feature/useradmin/logic/cubit/user_admin_cubit.dart';
 import 'package:travel_planner/feature/userpreferences/data/remote/Userpreferencesremote.dart';
 import 'package:travel_planner/feature/userpreferences/logic/cubit/userpreferences_cubit.dart';
 
@@ -99,4 +101,10 @@ Future<void> setupGetIt() async {
   // profile
   getIt.registerLazySingleton<Profiledata>(() => Profiledata(getIt<Crud>()));
   getIt.registerFactory<ProfileCubit>(() => ProfileCubit(getIt()));
+
+  // useradmin
+  getIt.registerLazySingleton<UserAdmindata>(
+    () => UserAdmindata(getIt<Crud>()),
+  );
+  getIt.registerFactory<UserAdminCubit>(() => UserAdminCubit(getIt()));
 }

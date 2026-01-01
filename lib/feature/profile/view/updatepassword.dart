@@ -34,6 +34,11 @@ class UpdatePassword extends StatelessWidget {
         child: BlocBuilder<ProfileCubit, ProfileState>(
           builder: (context, state) {
             final cubit = context.read<ProfileCubit>();
+            if (state is ProfileLoading) {
+              return Center(
+                child: CircularProgressIndicator(color: Colors.green),
+              );
+            }
             return SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.all(30),

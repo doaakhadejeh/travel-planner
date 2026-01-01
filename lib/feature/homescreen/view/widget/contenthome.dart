@@ -14,7 +14,10 @@ class ContentHome extends StatelessWidget {
         height: 280.h,
         width: 400.w,
         decoration: BoxDecoration(
-          border: Border.all(width: 2.sp, color: Colors.black),
+          border: Border.all(
+            width: 2.sp,
+            color: Colors.white.withAlpha((0.9 * 255).round()),
+          ),
           borderRadius: BorderRadius.circular(15),
         ),
         child: FieldHome(),

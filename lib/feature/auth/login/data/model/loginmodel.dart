@@ -19,7 +19,7 @@ class LoginResponse {
       name: json['data']['name'],
       email: json['data']['email'],
       phoneNumber: json['data']['email'],
-      role: json['data']['email'],
+      role: json['data']['role'],
     );
   }
 }

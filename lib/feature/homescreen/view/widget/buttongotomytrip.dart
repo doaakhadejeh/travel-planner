@@ -13,14 +13,15 @@ class ButtonGoToMyTrip extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 10.w),
       child: Custombutton(
         backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        borderColor: Colors.black,
+        foregroundColor: Colors.green.shade800,
+        borderColor: Colors.green.shade800,
+
         onPressed: () {
           context.push(Routconst.trip);
         },
         isRectangleBorder: true,
         radiusRectangleBorder: 10,
-        child: Text("go to my trip"),
+        child: Text("Go to My Trips"),
       ),
     );
   }

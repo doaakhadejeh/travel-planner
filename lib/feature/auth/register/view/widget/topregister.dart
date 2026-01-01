@@ -15,7 +15,7 @@ class Topregister extends StatelessWidget {
         ),
         SizedBox(height: 5.h),
         Text(
-          "WelCome",
+          "WellCome",
           style: TextStyle(fontSize: 29.sp, fontWeight: .bold),
         ),
         SizedBox(height: 10.h),

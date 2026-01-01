@@ -15,8 +15,7 @@ class FieldHome extends StatelessWidget {
         children: [
           SizedBox(height: 10.h),
           Text(
-            "Please Fill This Field",
-
+            "Create your travel plan",
             style: TextStyle(
               color: Colors.white,
               fontSize: 27.sp,
@@ -24,7 +23,6 @@ class FieldHome extends StatelessWidget {
             ),
           ),
           SizedBox(height: 20.h),
-
           Costomtextformfield(
             controller: context.read<HomescreenCubit>().country,
             hinttext: 'country',
@@ -36,7 +34,6 @@ class FieldHome extends StatelessWidget {
             validatortext: "please enter country",
           ),
           SizedBox(height: 5.h),
-
           Costomtextformfield(
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(13),
@@ -49,7 +46,6 @@ class FieldHome extends StatelessWidget {
             validatortext: "please enter days",
           ),
           SizedBox(height: 5.h),
-
           Costomtextformfield(
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(13),

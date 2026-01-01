@@ -12,9 +12,9 @@ class Itineraryday extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green.shade50,
+      backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
-        backgroundColor: Colors.green.shade50,
+        backgroundColor: Colors.grey.shade50,
         centerTitle: true,
         title: Text(
           "Itinerary Days",

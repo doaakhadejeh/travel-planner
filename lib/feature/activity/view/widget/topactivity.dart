@@ -23,24 +23,12 @@ class Topactivity extends StatelessWidget {
               fit: .contain,
             ),
           ),
-          // Positioned(
-          //   top: 70.h,
-          //   left: 0.w,
-
-          //   child: IconButton(
-          //     onPressed: () {
-          //       context.go(Routconst.trip);
-          //     },
-          //     icon: Icon(Icons.arrow_back, color: Colors.white),
-          //   ),
-          // ),
           Positioned(
             top: 70.h,
             right: 4.w,
             left: 40.w,
-
             child: Text(
-              "activities",
+              "Activities",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 30.sp,

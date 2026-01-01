@@ -4,10 +4,8 @@ class UserPreferenceResponse {
   final String preferredBudgetMin;
   final String preferredBudgetMax;
   final String preferredFood;
-
   final String preferredCountries;
   final String interests;
-
   final String lastUpdateAt;
 
   UserPreferenceResponse({
@@ -27,7 +25,6 @@ class UserPreferenceResponse {
       travelStyle: json['travel_style'],
       preferredBudgetMin: json['preferred_budget_min'].toString(),
       preferredBudgetMax: json['preferred_budget_max'].toString(),
-
       preferredCountries: json['preferred_countries'],
       preferredFood: json['preferred_food'],
       interests: json['interests'],

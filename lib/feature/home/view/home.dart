@@ -21,7 +21,6 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       extendBody: true,
       body: IndexedStack(index: currentIndex, children: pages),
-
       bottomNavigationBar: buildCustomBottomNavBar(context, currentIndex, (
         index,
       ) {

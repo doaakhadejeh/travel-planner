@@ -13,7 +13,6 @@ class Homescreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      backgroundColor: Colors.grey,
       body: SingleChildScrollView(
         child: Container(
           height: 700.h,
@@ -24,18 +23,21 @@ class Homescreen extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              children: [
-                SizedBox(height: 70.h),
-                ContentHome(),
-                SizedBox(height: 100.h),
-                ButtonGenerateTrip(),
-                SizedBox(height: 5.h),
-                ButtonGoToMyTrip(),
-                Homescreenlistener(),
-              ],
+          child: Container(
+            color: Colors.black.withAlpha((0.4 * 255).round()),
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  SizedBox(height: 70.h),
+                  ContentHome(),
+                  SizedBox(height: 100.h),
+                  ButtonGenerateTrip(),
+                  SizedBox(height: 5.h),
+                  ButtonGoToMyTrip(),
+                  Homescreenlistener(),
+                ],
+              ),
             ),
           ),
         ),

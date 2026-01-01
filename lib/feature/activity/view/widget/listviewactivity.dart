@@ -18,12 +18,11 @@ class Listviewactivity extends StatelessWidget {
             shape: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(
-                color: activity.type == 'meal' ? Colors.purple : Colors.green,
+                color: activity.type == 'meal' ? Colors.orange : Colors.green,
               ),
             ),
             child: Container(
               width: double.infinity,
-
               padding: .all(10),
               child: Column(
                 crossAxisAlignment: .start,
@@ -34,13 +33,13 @@ class Listviewactivity extends StatelessWidget {
                         "type : ${activity.type}",
                         style: TextStyle(
                           color: activity.type == 'meal'
-                              ? Colors.purple
+                              ? Colors.orange
                               : Colors.green,
                           fontSize: 12.sp,
                         ),
                       ),
                       activity.type == 'meal'
-                          ? Icon(Icons.local_pizza, color: Colors.purple)
+                          ? Icon(Icons.local_pizza, color: Colors.orange)
                           : Icon(Icons.travel_explore, color: Colors.green),
                     ],
                   ),
@@ -51,47 +50,43 @@ class Listviewactivity extends StatelessWidget {
                   ),
                   Text(
                     activity.description,
-                    style: TextStyle(color: Colors.grey, fontSize: 8.sp),
+                    style: TextStyle(
+                      color: Colors.grey.shade700,
+                      fontSize: 11.sp,
+                    ),
+                    softWrap: true,
+                    overflow: TextOverflow.visible,
                   ),
-                  SizedBox(height: 7.h),
+                  SizedBox(height: 10.h),
                   Row(
                     children: [
-                      Icon(Icons.timelapse),
+                      Icon(Icons.watch_later),
+                      Text(activity.time, style: TextStyle(fontSize: 11.sp)),
+                      SizedBox(width: 70.w),
+                      Icon(Icons.money, color: Colors.green.shade900),
+
                       Text(
-                        "time :${activity.time}",
-                        style: TextStyle(fontSize: 10.sp),
-                      ),
-                    ],
-                  ),
-
-                  SizedBox(height: 5.h),
-                  Row(
-                    children: [
-                      Icon(Icons.location_on_outlined),
-                      Expanded(
-                        child: Text(
-                          "location :${activity.location}",
-
-                          softWrap: true,
-                          overflow: TextOverflow.visible,
-                          style: TextStyle(fontSize: 9.sp),
-                        ),
-                      ),
-                    ],
-                  ),
-
-                  SizedBox(width: 10.w),
-                  Row(
-                    children: [
-                      Text(
-                        "cost :${activity.cost}",
+                        "${activity.cost}\$",
                         style: TextStyle(
                           fontSize: 10.sp,
                           fontWeight: .bold,
                           color: Colors.green.shade900,
                         ),
                       ),
-                      Icon(Icons.money, color: Colors.green.shade900),
+                    ],
+                  ),
+                  SizedBox(height: 10.h),
+                  Row(
+                    children: [
+                      Icon(Icons.location_on_outlined),
+                      Expanded(
+                        child: Text(
+                          activity.location,
+                          softWrap: true,
+                          overflow: TextOverflow.visible,
+                          style: TextStyle(fontSize: 11.sp),
+                        ),
+                      ),
                     ],
                   ),
                 ],

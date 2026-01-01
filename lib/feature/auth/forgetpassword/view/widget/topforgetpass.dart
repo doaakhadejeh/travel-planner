@@ -7,6 +7,7 @@ class Topforgetpassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: .start,
       children: [
         Text(
           "forget your password!",

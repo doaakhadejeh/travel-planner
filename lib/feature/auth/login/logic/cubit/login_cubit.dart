@@ -27,6 +27,7 @@ class LoginCubit extends Cubit<LoginState> {
           "userToken",
           loginResponse.token,
         );
+        await SharedPrefHelper.setData("role", loginResponse.role);
         emit(LoginSuccess(loginResponse));
       },
     );

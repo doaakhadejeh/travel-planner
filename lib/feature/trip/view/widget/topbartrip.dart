@@ -7,7 +7,7 @@ class TopBarTrip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      "My Archive Trip",
+      "Trip History",
       style: TextStyle(fontSize: 30.sp, fontWeight: .bold),
     );
   }

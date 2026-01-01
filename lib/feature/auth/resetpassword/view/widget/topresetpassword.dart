@@ -7,6 +7,7 @@ class Topresetpassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: .start,
       children: [
         SizedBox(height: 25.h),
         Text(

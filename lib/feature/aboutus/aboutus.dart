@@ -28,14 +28,12 @@ class AboutUs extends StatelessWidget {
                     "We are a team of travel enthusiasts and AI experts dedicated to making trip planning seamless, personalized, and exciting for everyone.",
                   ),
                   SizedBox(height: 30.h),
-
                   buildSectionTitle("Our Mission"),
                   SizedBox(height: 10.h),
                   buildDescription(
                     "To empower travelers by using artificial intelligence to generate perfect itineraries based on individual preferences, budgets, and interests.",
                   ),
                   SizedBox(height: 30.h),
-
                   buildFeatureCard(
                     Icons.auto_awesome,
                     "AI Powered",

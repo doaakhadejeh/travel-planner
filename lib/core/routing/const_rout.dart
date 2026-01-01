@@ -1,6 +1,7 @@
 class Routconst {
   static const String master = "/";
   static const String home = "/home";
+  static const String homeAdmin = "/homeAdmin";
 
   //auth
   static const String login = "/login";

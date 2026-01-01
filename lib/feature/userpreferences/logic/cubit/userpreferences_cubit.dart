@@ -96,9 +96,10 @@ class UserpreferencesCubit extends Cubit<UserpreferencesState> {
 
     if (currentState is UserpreferencesSuccess) {
       if (currentState.response.isEmpty) {
-        await addPreference();
         await SharedPrefHelper.setData("hasPreferences", true);
+        await addPreference();
       } else {
+        await SharedPrefHelper.setData("hasPreferences", true);
         await updatePreference(currentState.response.first.id);
       }
     }

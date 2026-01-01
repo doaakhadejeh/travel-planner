@@ -22,7 +22,6 @@ void showImagePickerBottomSheet(BuildContext context, ProfileCubit cubit) {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
-
             BottomSheetItem(
               icon: Icons.photo_camera,
               title: "Take Photo",
@@ -31,13 +30,11 @@ void showImagePickerBottomSheet(BuildContext context, ProfileCubit cubit) {
                 final picked = await ImagePicker().pickImage(
                   source: ImageSource.camera,
                 );
-
                 if (picked != null) {
                   cubit.profileImage(File(picked.path));
                 }
               },
             ),
-
             BottomSheetItem(
               icon: Icons.photo_library,
               title: "Choose from Gallery",
@@ -46,15 +43,12 @@ void showImagePickerBottomSheet(BuildContext context, ProfileCubit cubit) {
                 final picked = await ImagePicker().pickImage(
                   source: ImageSource.gallery,
                 );
-
                 if (picked != null) {
                   cubit.profileImage(File(picked.path));
                 }
               },
             ),
-
             const SizedBox(height: 10),
-
             BottomSheetItem(
               icon: Icons.close,
               title: "Cancel",
